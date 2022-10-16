@@ -11,11 +11,11 @@ def initialize_firestore():
     # Setup Google Cloud Key - The json file is obtained by going to 
     # Project Settings, Service Accounts, Create Service Account, and then
     # Generate New Private Key
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]  = "porter-planner-firebase-adminsdk-wvwwg-b3c970100b.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]  = "porter-planner-firebase-adminsdk-wvwwg-cd7d5d21e2.json"
 
     # Use the application default credentials.  The projectID is obtianed 
     # by going to Project Settings and then General.
-    cred = credentials.Certificate("porter-planner-firebase-adminsdk-wvwwg-b3c970100b.json")
+    cred = credentials.Certificate("porter-planner-firebase-adminsdk-wvwwg-cd7d5d21e2.json")
     firebase_admin.initialize_app(cred)
 
     # Get reference to database
@@ -36,12 +36,16 @@ def add_new_dino(db):
 
     name = input("Dinosaur: ")
 
+    try: size = float(input("New Size (feet): "))
+    except:
+        print("You need to type in a number.\n")
+        add_new_dino(db)
+    
     try:
-        size = float(input("New Size (feet): "))
         weight = float(input("New Weight (tons): "))
     except:
-        print("You need to type in a number.")
-        main()
+        print("You need to type in a number.\n")
+        add_new_dino(db)
 
     # Check for an already existing Dino by the same name.
     # The document ID must be unique in Firestore.
@@ -69,11 +73,16 @@ def update_dino(db):
 
     name = input("Dinosaur: ")
 
+    try: new_size = float(input("New Size (feet): "))
+    except:
+        print("You need to type in a number.\n")
+        update_dino(db)
+    
     try:
-        new_size = float(input("New Size (feet): "))
         new_weight = float(input("New Weight (tons): "))
     except:
-        print("You need to type in a number.")
+        print("You need to type in a number.\n")
+        update_dino(db)
 
     # Check for an already existing Dino by the same name.
     # The document ID must be unique in Firestore.
