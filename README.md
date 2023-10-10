@@ -22,11 +22,10 @@ I am using python 3.10 and I downloaded a module called firebase_admin that allo
 
 * [Firebase](https://firebase.google.com/docs)
 * [W3 Schools](https://www.w3schools.com/)
-* [Google Cloud] (https://cloud.google.com/docs)
+* [Google Cloud](https://cloud.google.com/docs)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
 * I plan to add more facts to each of the dinosaurs such as time period and perhaps including a picture for each one.
 * I need to fix the program so that it has more error catching and stuff like that.
 * The last thing is that I want to add user authentication to it so that you can login and save your favorite dinosaurs.
